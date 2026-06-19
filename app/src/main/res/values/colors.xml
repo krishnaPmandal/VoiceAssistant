@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Glassmorphism -->
+    <color name="bg_dark">#0A0A14</color>
+    <color name="surface_glass">#1A1A2E</color>
+    <color name="pink_primary">#FF2D78</color>
+    <color name="pink_light">#FF6FA8</color>
+    <color name="blue_primary">#2D78FF</color>
+    <color name="blue_light">#6FA8FF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_60">#99FFFFFF</color>
+    <color name="white_alpha_80">#CCFFFFFF</color>
+    <color name="white_alpha_40">#66FFFFFF</color>
+    <color name="white_alpha_10">#1AFFFFFF</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B0B0CC</color>
+
+    <!-- Pink Theme -->
+    <color name="pink_bg">#0F0A14</color>
+    <color name="pink_surface">#1E0A1E</color>
+    <color name="pink_accent">#FF2D78</color>
+
+    <!-- Blue Theme -->
+    <color name="blue_bg">#0A0A1F</color>
+    <color name="blue_surface">#0A0A2E</color>
+    <color name="blue_accent">#2D78FF</color>
+</resources>

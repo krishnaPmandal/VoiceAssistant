@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom">
+
+    <LinearLayout android:id="@+id/overlayCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:background="@drawable/overlay_bg"
+        android:paddingStart="24dp" android:paddingEnd="24dp"
+        android:paddingTop="20dp" android:paddingBottom="40dp"
+        android:gravity="center_horizontal">
+
+        <!-- Handle -->
+        <View android:layout_width="40dp" android:layout_height="4dp"
+            android:background="#44FFFFFF" android:layout_marginBottom="16dp"/>
+
+        <!-- Assistant name -->
+        <TextView android:id="@+id/tvOverlayName"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Assistant"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-medium"/>
+
+        <!-- Waveform -->
+        <com.voiceassistant.WaveformView android:id="@+id/overlayWaveform"
+            android:layout_width="match_parent" android:layout_height="60dp"
+            android:layout_marginTop="12dp"/>
+
+        <!-- Status -->
+        <TextView android:id="@+id/tvOverlayStatus"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Listening"
+            android:textColor="#CCFFFFFF"
+            android:textSize="15sp"
+            android:layout_marginTop="12dp"/>
+
+        <!-- Spoken text (what user said) -->
+        <TextView android:id="@+id/tvOverlaySpoken"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Mic button -->
+        <FrameLayout android:layout_width="72dp" android:layout_height="72dp"
+            android:layout_marginTop="16dp">
+            <View android:id="@+id/micRippleOverlay"
+                android:layout_width="72dp" android:layout_height="72dp"
+                android:background="@drawable/mic_bg_active"
+                android:alpha="0.5"/>
+            <ImageButton android:id="@+id/btnMicOverlay"
+                android:layout_width="60dp" android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_mic"
+                android:background="@drawable/gradient_pink_blue"
+                android:padding="14dp"/>
+        </FrameLayout>
+
+        <!-- Response text (what assistant replied) -->
+        <TextView android:id="@+id/tvOverlayResponse"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#99FFFFFF"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="12dp"/>
+
+    </LinearLayout>
+</FrameLayout>

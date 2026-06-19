@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Voice Assistant</string>
+    <string name="listening">Listening…</string>
+    <string name="tap_to_speak">Tap to speak</string>
+    <string name="processing">Processing…</string>
+    <string name="settings_title">Settings</string>
+    <string name="assistant_name_label">Assistant Name</string>
+    <string name="assistant_name_default">Assistant</string>
+    <string name="theme_label">Theme</string>
+    <string name="language_auto">Auto-detect (English / Hinglish)</string>
+    <string name="history_title">Command History</string>
+    <string name="history_empty">No commands yet</string>
+    <string name="pref_name_key">assistant_name</string>
+    <string name="pref_theme_key">app_theme</string>
+</resources>

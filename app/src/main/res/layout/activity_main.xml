@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <!-- Background glow blobs -->
+    <View android:id="@+id/glowPink"
+        android:layout_width="280dp" android:layout_height="280dp"
+        android:background="@drawable/glow_pink"
+        android:alpha="0.35"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="-60dp" android:layout_marginStart="-60dp"/>
+
+    <View android:id="@+id/glowBlue"
+        android:layout_width="260dp" android:layout_height="260dp"
+        android:background="@drawable/glow_blue"
+        android:alpha="0.3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="-60dp" android:layout_marginEnd="-60dp"/>
+
+    <!-- Top bar -->
+    <LinearLayout android:id="@+id/topBar"
+        android:layout_width="0dp" android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="20dp" android:paddingEnd="20dp"
+        android:paddingTop="16dp" android:paddingBottom="8dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView android:id="@+id/tvAssistantName"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Assistant"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:fontFamily="sans-serif-medium"/>
+
+        <ImageButton android:id="@+id/btnHistory"
+            android:layout_width="44dp" android:layout_height="44dp"
+            android:src="@drawable/ic_history"
+            android:background="@drawable/glass_card_bg"
+            android:padding="10dp"
+            android:layout_marginEnd="8dp"/>
+
+        <ImageButton android:id="@+id/btnSettings"
+            android:layout_width="44dp" android:layout_height="44dp"
+            android:src="@drawable/ic_settings"
+            android:background="@drawable/glass_card_bg"
+            android:padding="10dp"/>
+    </LinearLayout>
+
+    <!-- Status card -->
+    <com.google.android.material.card.MaterialCardView android:id="@+id/statusCard"
+        style="@style/GlassCard"
+        android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_marginStart="20dp" android:layout_marginEnd="20dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/topBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp">
+
+            <TextView android:id="@+id/tvStatus"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Ready"
+                android:textColor="@color/white_alpha_80"
+                android:textSize="13sp"/>
+
+            <TextView android:id="@+id/tvCommandText"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Long press Home or tap mic to start"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Waveform visualizer -->
+    <com.voiceassistant.WaveformView android:id="@+id/waveformView"
+        android:layout_width="0dp" android:layout_height="80dp"
+        android:layout_marginStart="20dp" android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/statusCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Mic button -->
+    <FrameLayout android:id="@+id/micContainer"
+        android:layout_width="100dp" android:layout_height="100dp"
+        app:layout_constraintTop_toBottomOf="@+id/waveformView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp">
+
+        <View android:id="@+id/micRipple"
+            android:layout_width="100dp" android:layout_height="100dp"
+            android:background="@drawable/mic_bg_idle"
+            android:alpha="0.4"/>
+
+        <ImageButton android:id="@+id/btnMic"
+            android:layout_width="80dp" android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_mic"
+            android:background="@drawable/mic_bg_idle"
+            android:padding="18dp"/>
+    </FrameLayout>
+
+    <!-- Response card -->
+    <com.google.android.material.card.MaterialCardView android:id="@+id/responseCard"
+        style="@style/GlassCard"
+        android:layout_width="0dp" android:layout_height="0dp"
+        android:layout_marginStart="20dp" android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp" android:layout_marginBottom="20dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/micContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp">
+
+                <TextView android:id="@+id/tvResponseLabel"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Response"
+                    android:textColor="@color/pink_primary"
+                    android:textSize="11sp"
+                    android:textAllCaps="true"
+                    android:letterSpacing="0.1"/>
+
+                <TextView android:id="@+id/tvResponse"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:lineSpacingMultiplier="1.4"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
+        </ScrollView>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Quick action chips -->
+    <HorizontalScrollView android:id="@+id/quickActionsScroll"
+        android:layout_width="0dp" android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="20dp"
+        android:paddingStart="20dp" android:paddingEnd="20dp">
+
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:spacing="8dp">
+
+            <com.google.android.material.chip.Chip android:id="@+id/chipAlarm"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="⏰ Set Alarm"
+                android:textColor="@color/text_primary"
+                app:chipBackgroundColor="@color/white_alpha_10"
+                app:chipStrokeColor="@color/white_alpha_40"
+                app:chipStrokeWidth="1dp"
+                android:layout_marginEnd="8dp"/>
+
+            <com.google.android.material.chip.Chip android:id="@+id/chipMusic"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🎵 Play Music"
+                android:textColor="@color/text_primary"
+                app:chipBackgroundColor="@color/white_alpha_10"
+                app:chipStrokeColor="@color/white_alpha_40"
+                app:chipStrokeWidth="1dp"
+                android:layout_marginEnd="8dp"/>
+
+            <com.google.android.material.chip.Chip android:id="@+id/chipWhatsApp"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="💬 WhatsApp"
+                android:textColor="@color/text_primary"
+                app:chipBackgroundColor="@color/white_alpha_10"
+                app:chipStrokeColor="@color/white_alpha_40"
+                app:chipStrokeWidth="1dp"
+                android:layout_marginEnd="8dp"/>
+
+            <com.google.android.material.chip.Chip android:id="@+id/chipSearch"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🔍 Search"
+                android:textColor="@color/text_primary"
+                app:chipBackgroundColor="@color/white_alpha_10"
+                app:chipStrokeColor="@color/white_alpha_40"
+                app:chipStrokeWidth="1dp"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
